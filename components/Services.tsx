@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 interface ServiceCardProps {
@@ -58,10 +57,10 @@ const Services: React.FC = () => {
 
   return (
     <section id="services" className="py-20 bg-slate-100">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 sm:px-6">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-extrabold text-blue-900">Our Expertise</h2>
-          <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-blue-900">Our Expertise</h2>
+          <p className="mt-4 text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
             From initial concept to long-term care, we provide end-to-end solutions for all your solar and electrical needs.
           </p>
         </div>

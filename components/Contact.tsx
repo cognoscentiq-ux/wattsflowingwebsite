@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const LocationIcon = () => (
@@ -28,27 +27,27 @@ const Contact: React.FC = () => {
 
   return (
     <section id="contact" className="py-20 bg-slate-100">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 sm:px-6">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-extrabold text-blue-900">Get In Touch</h2>
-          <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-blue-900">Get In Touch</h2>
+          <p className="mt-4 text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
             Have a project in mind or need a consultation? We'd love to hear from you.
           </p>
         </div>
         <div className="flex flex-col lg:flex-row bg-white rounded-xl shadow-2xl overflow-hidden">
-          <div className="lg:w-1/2 p-8 md:p-12 bg-blue-800 text-white">
-            <h3 className="text-3xl font-bold mb-6">Contact Information</h3>
+          <div className="lg:w-1/2 p-6 sm:p-8 md:p-12 bg-blue-800 text-white">
+            <h3 className="text-2xl sm:text-3xl font-bold mb-6">Contact Information</h3>
             <p className="mb-8 text-blue-100">Fill up the form and our Team will get back to you within 24 hours.</p>
             <div className="space-y-6">
               {contactInfo.map((info, index) => (
                 <div key={index} className="flex items-center space-x-4">
-                  <div className="text-orange-400">{info.icon}</div>
-                  <span className="text-lg">{info.text}</span>
+                  <div className="text-orange-400 shrink-0">{info.icon}</div>
+                  <span className="text-base sm:text-lg">{info.text}</span>
                 </div>
               ))}
             </div>
           </div>
-          <div className="lg:w-1/2 p-8 md:p-12">
+          <div className="lg:w-1/2 p-6 sm:p-8 md:p-12">
             <h3 className="text-2xl font-bold text-blue-900 mb-6">Send Us a Message</h3>
             <form onSubmit={(e) => e.preventDefault()}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 
 const SunIcon: React.FC<{ className?: string }> = ({ className }) => (
@@ -14,16 +13,17 @@ const Header: React.FC = () => {
     { href: '#home', label: 'Home' },
     { href: '#services', label: 'Services' },
     { href: '#about', label: 'About Us' },
+    { href: '#testimonials', label: 'Testimonials' },
     { href: '#contact', label: 'Contact' },
   ];
 
   return (
     <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-md">
-      <div className="container mx-auto px-6 py-3">
+      <div className="container mx-auto px-4 sm:px-6 py-3">
         <div className="flex items-center justify-between">
           <a href="#home" className="flex items-center space-x-2">
             <SunIcon className="w-8 h-8 text-orange-500" />
-            <span className="text-xl font-bold text-blue-800 tracking-tight">WATTS FLOWING LTD</span>
+            <span className="text-lg sm:text-xl font-bold text-blue-800 tracking-tight">WATTS FLOWING LTD</span>
           </a>
 
           <nav className="hidden md:flex items-center space-x-8">
@@ -39,7 +39,7 @@ const Header: React.FC = () => {
           </a>
 
           <div className="md:hidden">
-            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-gray-700 focus:outline-none">
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-gray-700 focus:outline-none" aria-label="Toggle menu">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"}></path>
               </svg>
