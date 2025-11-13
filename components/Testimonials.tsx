@@ -61,7 +61,7 @@ const Testimonials: React.FC = () => {
             We are proud to have earned the trust of our clients. Here's what they have to say about their experience with us.
           </p>
         </div>
-        <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {testimonialsData.map((testimonial, index) => (
             <TestimonialCard key={index} {...testimonial} />
           ))}

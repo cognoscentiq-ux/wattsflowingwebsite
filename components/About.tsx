@@ -19,8 +19,8 @@ const About: React.FC = () => {
             </p>
             <div className="bg-slate-50 p-6 rounded-lg border-l-4 border-orange-500">
               <div className="flex flex-col sm:flex-row items-center text-center sm:text-left space-y-4 sm:space-y-0 sm:space-x-4">
-                <div className="w-20 h-20 rounded-full flex items-center justify-center bg-slate-200 border-4 border-white shadow-md shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-slate-400" viewBox="0 0 20 20" fill="currentColor">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center bg-slate-200 border-4 border-white shadow-md shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 sm:h-12 sm:w-12 text-slate-400" viewBox="0 0 20 20" fill="currentColor">
                         <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
                     </svg>
                 </div>

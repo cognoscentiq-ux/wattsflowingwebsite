@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const SunIcon: React.FC<{ className?: string }> = ({ className }) => (
   <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="currentColor">
@@ -7,60 +7,47 @@ const SunIcon: React.FC<{ className?: string }> = ({ className }) => (
 );
 
 const Header: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const navLinks = [
     { href: '#home', label: 'Home' },
     { href: '#services', label: 'Services' },
-    { href: '#about', label: 'About Us' },
-    { href: '#testimonials', label: 'Testimonials' },
+    { href: '#about', label: 'About' },
+    { href: '#testimonials', label: 'Clients' },
     { href: '#contact', label: 'Contact' },
   ];
 
   return (
     <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-md">
-      <div className="container mx-auto px-4 sm:px-6 py-3">
+      <div className="container mx-auto px-2 sm:px-4 py-3">
         <div className="flex items-center justify-between">
-          <a href="#home" className="flex items-center space-x-2">
-            <SunIcon className="w-8 h-8 text-orange-500" />
-            <span className="text-lg sm:text-xl font-bold text-blue-800 tracking-tight">WATTS FLOWING LTD</span>
+          <a href="#home" className="flex items-center space-x-1 sm:space-x-2 min-w-0">
+            <SunIcon className="w-6 h-6 sm:w-8 sm:h-8 text-orange-500 shrink-0" />
+            <span className="text-sm sm:text-lg md:text-xl font-bold text-blue-800 tracking-tight truncate">
+              <span className="hidden sm:inline">WATTS FLOWING LTD</span>
+              <span className="sm:hidden">WATTS FLOWING</span>
+            </span>
           </a>
 
-          <nav className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <a key={link.href} href={link.href} className="text-gray-600 font-medium hover:text-orange-500 transition-colors duration-300">
-                {link.label}
-              </a>
-            ))}
-          </nav>
-          
-          <a href="#contact" className="hidden md:inline-block bg-orange-500 text-white font-semibold px-5 py-2 rounded-full hover:bg-orange-600 transition-all duration-300 shadow-sm">
-            Get a Quote
-          </a>
-
-          <div className="md:hidden">
-            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-gray-700 focus:outline-none" aria-label="Toggle menu">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"}></path>
-              </svg>
-            </button>
-          </div>
-        </div>
-        
-        {isMenuOpen && (
-          <div className="md:hidden mt-4 bg-white rounded-lg shadow-xl">
-            <nav className="flex flex-col items-center space-y-2 p-4">
+          <div className="flex items-center space-x-1 sm:space-x-2 shrink-0">
+            <nav className="flex items-center space-x-1 sm:space-x-2 md:space-x-3">
               {navLinks.map((link) => (
-                <a key={link.href} href={link.href} onClick={() => setIsMenuOpen(false)} className="text-gray-600 w-full text-center font-medium py-2 hover:bg-orange-50 rounded-md transition-colors duration-300">
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-xs sm:text-sm text-gray-600 font-medium hover:text-orange-500 transition-colors duration-300 px-1 sm:px-2 py-1 rounded-md"
+                >
                   {link.label}
                 </a>
               ))}
-              <a href="#contact" onClick={() => setIsMenuOpen(false)} className="w-full text-center bg-orange-500 text-white font-semibold mt-2 px-5 py-2 rounded-full hover:bg-orange-600 transition-all duration-300 shadow-sm">
-                Get a Quote
-              </a>
             </nav>
+            
+            <a
+              href="#contact"
+              className="inline-block bg-orange-500 text-white font-semibold text-xs sm:text-sm px-3 py-1 sm:px-4 sm:py-2 rounded-full hover:bg-orange-600 transition-all duration-300 shadow-sm"
+            >
+              <span className="hidden sm:inline">Get a </span>Quote
+            </a>
           </div>
-        )}
+        </div>
       </div>
     </header>
   );
