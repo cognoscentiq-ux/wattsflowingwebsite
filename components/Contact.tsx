@@ -27,7 +27,7 @@ const Contact: React.FC = () => {
   const [message, setMessage] = useState('');
 
   // Destination email requested
-  const destinationEmail = 'ioproxxy@gmail.com';
+  const destinationEmail = 'wattsflowing2023@gmail.com';
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
