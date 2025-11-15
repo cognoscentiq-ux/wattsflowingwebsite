@@ -1,6 +1,6 @@
 import React from "react";
 
-/**
+/**,
  * Floating WhatsApp chat button.
  * - VITE_WHATSAPP_NUMBER: international phone number, digits only or with + (e.g. 15551234567 or +15551234567)
  * - VITE_WHATSAPP_MESSAGE: optional default message
