@@ -1,97 +1,36 @@
 import React from "react";
 
-/**,
- * Floating WhatsApp chat button.
- * ENV variables:
- * - VITE_WHATSAPP_NUMBER: international phone number, digits only or with leading + (e.g. 15551234567 or +15551234567)
- * - VITE_WHATSAPP_MESSAGE: optional default message
- *
- * After adding env vars, restart Vite/Vercel build so they are recognized.
- */
-
 const WhatsAppChat: React.FC = () => {
-  const env: any = (import.meta as any).env || {};
-  const rawNumber: string | undefined = env.VITE_WHATSAPP_NUMBER;
-  const defaultMessage: string =
-    env.VITE_WHATSAPP_MESSAGE || "Hi, I'd like to talk about your services.";
+  // Hardcoded number as requested
+  const phoneNumber = "254701329141"; 
+  const defaultMessage = "Hello, I would like to inquire about your services.";
 
-  if (!rawNumber) {
-    // No number configured — do not render anything
-    return null;
-  }
-
-  /**
-   * Sanitize phone:
-   * - keep digits
-   * - keep optional leading +
-   */
-  const phone = rawNumber.replace(/[^\d+]/g, "");
-
-  /**
-   * wa.me format cannot include "+"
-   * So we must remove it if present.
-   */
-  const normalizedPhone = phone.replace(/^\+/, "");
-
-  const url =
-    `https://wa.me/${normalizedPhone}` +
-    (defaultMessage ? `?text=${encodeURIComponent(defaultMessage)}` : "");
-
-  const wrapperStyle: React.CSSProperties = {
-    position: "fixed",
-    right: 20,
-    bottom: 20,
-    zIndex: 99999,
-    pointerEvents: "auto",
-  };
-
-  const buttonStyle: React.CSSProperties = {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    width: 56,
-    height: 56,
-    borderRadius: "50%",
-    background: "#25D366",
-    boxShadow: "0 6px 18px rgba(37,211,102,0.3)",
-    color: "white",
-    textDecoration: "none",
-  };
-
-  const svgStyle: React.CSSProperties = {
-    width: 28,
-    height: 28,
-  };
+  const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(defaultMessage)}`;
 
   return (
-    <div style={wrapperStyle} data-testid="whatsapp-wrapper">
+    <div className="fixed bottom-6 right-6 z-50 print:hidden">
       <a
         href={url}
         target="_blank"
         rel="noopener noreferrer"
+        className="group flex items-center justify-center w-16 h-16 bg-[#25D366] rounded-full shadow-xl hover:bg-[#20bd5a] hover:scale-110 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#25D366]/50"
         aria-label="Chat on WhatsApp"
-        title="Chat on WhatsApp"
-        style={buttonStyle}
       >
         <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          style={svgStyle}
           xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true"
+          width="36"
+          height="36"
+          viewBox="0 0 24 24"
+          fill="white"
+          className="fill-white"
         >
-          <path
-            d="M20.52 3.48A11.85 11.85 0 0 0 12.06.5C6.62.5 1.99 4.98 1.4 10.2c-.39 4.06 1.2 7.96 4.27 10.37L3 23l2.6-1.07a12.11 12.11 0 0 0 6.44 1.82h.01c5.44 0 10.07-4.48 10.66-9.7.59-5.22-2.58-9.9-7.2-10.57z"
-            fill="#075E54"
-            opacity="0.0"
-          />
-          <path
-            fillRule="evenodd"
-            clipRule="evenodd"
-            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.272-.1-.472-.148-.672.149-.197.297-.768.966-.942 1.164-.174.197-.347.223-.644.075-.297-.149-1.255-.462-2.39-1.477-.884-.788-1.48-1.761-1.652-2.059-.174-.297-.019-.458.13-.606.134-.133.298-.347.447-.52.149-.174.198-.298.298-.497.099-.198 0-.371-.049-.52-.049-.149-.672-1.612-.92-2.21-.242-.581-.487-.5-.672-.51l-.57-.01c-.197 0-.52.074-.794.372s-1.04 1.016-1.04 2.479c0 1.462 1.064 2.875 1.213 3.074.149.197 2.095 3.2 5.076 4.487 3.12 1.375 3.12.917 3.68.86.562-.058 1.758-.718 2.006-1.412.248-.697.248-1.294.173-1.413-.074-.12-.272-.197-.57-.347z"
-            fill="#fff"
-          />
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.506-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487 3.12 1.374 3.12.918 3.68.861.56-.057 1.757-.718 2.006-1.413.248-.695.248-1.29.173-1.414z" />
         </svg>
+        <span className="absolute right-full mr-4 top-1/2 -translate-y-1/2 bg-gray-900 text-white px-3 py-1.5 rounded-lg text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none shadow-sm">
+          Chat with us
+          {/* Small arrow for tooltip */}
+          <span className="absolute top-1/2 -right-1 -translate-y-1/2 border-4 border-transparent border-l-gray-900"></span>
+        </span>
       </a>
     </div>
   );
