@@ -2,7 +2,7 @@ import React from "react";
 
 const WhatsAppChat: React.FC = () => {
   // Hardcoded number as requested
-  const phoneNumber = "254701329141"; 
+  const phoneNumber = "254722623370"; 
   const defaultMessage = "Hello, I would like to inquire about your services.";
 
   const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(defaultMessage)}`;
