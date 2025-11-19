@@ -6,7 +6,7 @@ const Hero: React.FC = () => {
     <section id="home" className="relative h-[80vh] min-h-[500px] flex items-center justify-center text-white">
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('https://picsum.photos/1600/900?image=20')" }}
+        style={{ backgroundImage: "url('https://ibb.co/bMdnzqXn')" }}
       ></div>
       <div className="absolute inset-0 bg-black opacity-60"></div>
       <div className="relative z-10 container mx-auto px-6 text-center">
